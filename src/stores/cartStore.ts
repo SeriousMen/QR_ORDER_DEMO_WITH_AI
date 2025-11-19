@@ -1,9 +1,5 @@
 import { create } from 'zustand';
-import { type MenuItem } from '../data/mockData';
-
-interface CartItem extends MenuItem {
-  quantity: number;
-}
+import { type MenuItem, type CartItem } from '../types/menu';
 
 interface CartStore {
   items: CartItem[];
