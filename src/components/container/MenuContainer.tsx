@@ -7,7 +7,7 @@ import { useLanguage } from '../../hooks/useLanguage';
 const CountryIcon = ({ country }: { country: string }) => {
   return (
     <img 
-      src={`/src/assets/images/country/${country.toLowerCase()}.png`}
+      src={`/src/assets/images/country/${country.toUpperCase()}.png`}
       alt={country}
       className="w-6 h-4 object-cover rounded border border-gray-300"
       onError={(e) => {
