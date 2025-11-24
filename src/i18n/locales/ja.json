@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "all": "全て",
+    "dish": "料理",
+    "drink": "飲み物"
+  },
+  "table": "テーブル",
+  "orderingTogether": "人が一緒に注文中",
+  "orderAvailable": "注文可能",
+  "open": "営業中",
+  "allMenu": "全メニュー",
+  "food": "料理",
+  "drinks": "飲み物",
+  "cart": "カート",
+  "total": "合計",
+  "order": "注文する",
+  "addToCart": "カートに追加",
+  "quantity": "数量",
+  "price": "価格",
+  "soldOut": "売り切れ",
+  "readMore": "もっと読む",
+  "collapse": "たたむ",
+  "totalAmount": "合計金額",
+  "checkout": "お会計",
+  "orderCompleted": "注文が完了しました！",
+  "orderNumber": "注文番号",
+  "orderMessage": "ご注文を承りました。\n少々お待ちください。\n美味しいお料理をご用意いたします。",
+  "confirm": "確認",
+  "menu": {
+    "1": {
+      "name": "プルコギ定食",
+      "description": "柔らかいプルコギとご飯、おかずが一緒の定食"
+    },
+    "2": {
+      "name": "キムチチゲ",
+      "description": "辛くてさっぱりしたキムチチゲ"
+    },
+    "3": {
+      "name": "ビビンバ",
+      "description": "新鮮な野菜とコチュジャンが絶妙なビビンバ"
+    },
+    "4": {
+      "name": "サムギョプサル焼き",
+      "description": "厚切りサムギョプサル焼き"
+    },
+    "5": {
+      "name": "アメリカーノ",
+      "description": "濃厚エスプレッソの深い味わい"
+    },
+    "6": {
+      "name": "カフェラテ",
+      "description": "まろやかなミルクとエスプレッソのハーモニー"
+    },
+    "7": {
+      "name": "オレンジジュース",
+      "description": "新鮮なオレンジ100%ジュース"
+    },
+    "8": {
+      "name": "コーラ",
+      "description": "さっぱりコーラ"
+    }
+  }
+}

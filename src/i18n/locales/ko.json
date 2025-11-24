@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "all": "전체",
+    "dish": "음식",
+    "drink": "음료"
+  },
+  "table": "테이블",
+  "orderingTogether": "명이 함께 주문 중",
+  "orderAvailable": "주문 가능",
+  "open": "영업중",
+  "allMenu": "전체 메뉴",
+  "food": "음식",
+  "drinks": "음료",
+  "cart": "장바구니",
+  "total": "총 금액",
+  "order": "주문하기",
+  "addToCart": "담기",
+  "quantity": "수량",
+  "price": "가격",
+  "soldOut": "품절",
+  "readMore": "더보기",
+  "collapse": "접기",
+  "totalAmount": "총 결제금액",
+  "checkout": "결제하기",
+  "orderCompleted": "주문이 완료되었습니다!",
+  "orderNumber": "주문번호",
+  "orderMessage": "주문이 접수되었습니다.\n잠시만 기다려주시면 맛있는 음식을\n준비해드리겠습니다.",
+  "confirm": "확인",
+  "menu": {
+    "1": {
+      "name": "불고기 정식",
+      "description": "부드러운 불고기와 밥, 반찬이 함께 나오는 정식"
+    },
+    "2": {
+      "name": "김치찌개",
+      "description": "매콤하고 시원한 김치찌개"
+    },
+    "3": {
+      "name": "비빔밥",
+      "description": "신선한 나물과 고추장이 어우러진 비빔밥"
+    },
+    "4": {
+      "name": "삼겹살 구이",
+      "description": "두툼한 삼겹살 구이"
+    },
+    "5": {
+      "name": "아메리카노",
+      "description": "진한 에스프레소의 깊은 맛"
+    },
+    "6": {
+      "name": "카페라떼",
+      "description": "부드러운 우유와 에스프레소의 조화"
+    },
+    "7": {
+      "name": "오렌지 주스",
+      "description": "신선한 오렌지 100% 주스"
+    },
+    "8": {
+      "name": "콜라",
+      "description": "시원한 콜라"
+    }
+  }
+}

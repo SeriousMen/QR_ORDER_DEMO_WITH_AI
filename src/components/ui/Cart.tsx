@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ShoppingCartIcon, XMarkIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useCartStore } from '../../stores/cartStore';
 import { OrderSuccessModal } from './OrderSuccessModal';
@@ -7,6 +8,7 @@ import { OrderSuccessModal } from './OrderSuccessModal';
 // bg-white bg-red-500 text-red-500 bg-gray-50 bg-gray-100 hover:bg-gray-100 hover:bg-gray-200
 
 export const Cart = () => {
+  const { t: translate } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [showOrderSuccess, setShowOrderSuccess] = useState(false);
   const items = useCartStore(state => state.items);
@@ -47,7 +49,7 @@ export const Cart = () => {
                   {totalItems}
                 </span>
               </div>
-              <span className="font-medium text-gray-900">장바구니 ({totalItems}개)</span>
+              <span className="font-medium text-gray-900">{translate('cart')} ({totalItems}개)</span>
             </div>
             <span className="font-bold text-gray-900">{getTotalPrice().toLocaleString()}원</span>
           </button>
@@ -63,7 +65,7 @@ export const Cart = () => {
           <div className="mx-4 bg-white shadow-2xl rounded-2xl border-2 border-black max-h-96 overflow-hidden relative z-10">
           {/* 헤더 */}
           <div className="flex items-center justify-between p-4 border-b-2 border-black bg-gray-50">
-            <h3 className="text-lg font-bold text-black">장바구니</h3>
+            <h3 className="text-lg font-bold text-black">{translate('cart')}</h3>
             <button
               onClick={() => setIsExpanded(false)}
               className="p-1 hover:bg-gray-200 rounded transition-colors"
@@ -114,7 +116,7 @@ export const Cart = () => {
           {/* 결제 영역 */}
           <div className="border-t-2 border-black p-4 bg-gray-50">
             <div className="flex items-center justify-between mb-3">
-              <span className="font-bold text-black">총 결제금액</span>
+              <span className="font-bold text-black">{translate('totalAmount', '총 결제금액')}</span>
               <span className="text-lg font-bold text-black">
                 {getTotalPrice().toLocaleString()}원
               </span>
@@ -124,7 +126,7 @@ export const Cart = () => {
               onClick={handleOrder}
               className="w-full bg-black text-white py-3 font-bold hover:bg-gray-800 transition-all duration-300 rounded-lg hover:scale-[1.02]"
             >
-              결제하기
+              {translate('checkout', '결제하기')}
             </button>
           </div>
         </div>

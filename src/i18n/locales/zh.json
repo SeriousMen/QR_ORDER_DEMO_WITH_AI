@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "all": "全部",
+    "dish": "食物",
+    "drink": "饮料"
+  },
+  "table": "桌子",
+  "orderingTogether": "人一起点餐",
+  "orderAvailable": "可以点餐",
+  "open": "营业中",
+  "allMenu": "全部菜单",
+  "food": "食物",
+  "drinks": "饮料",
+  "cart": "购物车",
+  "total": "总计",
+  "order": "下单",
+  "addToCart": "加入购物车",
+  "quantity": "数量",
+  "price": "价格",
+  "soldOut": "售罄",
+  "readMore": "查看更多",
+  "collapse": "收起",
+  "totalAmount": "总金额",
+  "checkout": "结账",
+  "orderCompleted": "订单完成！",
+  "orderNumber": "订单号",
+  "orderMessage": "您的订单已接收。\n请稍等片刻，我们将为您\n准备美味的食物。",
+  "confirm": "确认",
+  "menu": {
+    "1": {
+      "name": "烤肉定食",
+      "description": "嫩嫩的烤肉配米饭和小菜"
+    },
+    "2": {
+      "name": "泡菜汤",
+      "description": "辣味清香的泡菜汤"
+    },
+    "3": {
+      "name": "拌饭",
+      "description": "新鲜蔬菜和韩式辣椒酱拌饭"
+    },
+    "4": {
+      "name": "烤五花肉",
+      "description": "厚切烤五花肉"
+    },
+    "5": {
+      "name": "美式咖啡",
+      "description": "浓郁意式浓缩咖啡的深度味道"
+    },
+    "6": {
+      "name": "咖啡拿铁",
+      "description": "丝滑牛奶与意式浓缩咖啡的完美结合"
+    },
+    "7": {
+      "name": "橙汁",
+      "description": "新鲜100%橙汁"
+    },
+    "8": {
+      "name": "可乐",
+      "description": "清爽可乐"
+    }
+  }
+}

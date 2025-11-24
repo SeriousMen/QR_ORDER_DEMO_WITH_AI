@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { type MenuItem } from '../../types/menu';
 import { useCartStore } from '../../stores/cartStore';
 
@@ -8,6 +9,7 @@ interface MenuCardProps {
 }
 
 export const MenuCard = ({ item }: MenuCardProps) => {
+  const { t: translate } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const addItem = useCartStore(state => state.addItem);
   
@@ -47,7 +49,7 @@ export const MenuCard = ({ item }: MenuCardProps) => {
             {!item.available && (
               <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center">
                 <span className="bg-white text-black px-2 py-1 text-sm font-bold">
-                  품절
+                  {translate('soldOut', '품절')}
                 </span>
               </div>
             )}
@@ -58,11 +60,11 @@ export const MenuCard = ({ item }: MenuCardProps) => {
         <div className="flex-1 min-w-0 order-1 sm:order-2">
           <div className="flex items-start justify-between mb-3">
             <h3 className="font-bold text-black text-lg leading-tight">
-              {item.name}
+              {translate(`menu.${item.id}.name`, item.name)}
             </h3>
             {!item.available && (
               <span className="text-sm text-white bg-black px-2 py-1 font-bold ml-2 flex-shrink-0">
-                품절
+                {translate('soldOut', '품절')}
               </span>
             )}
           </div>
@@ -72,7 +74,7 @@ export const MenuCard = ({ item }: MenuCardProps) => {
               <p className={`text-gray-700 leading-relaxed ${
                 !isExpanded && isLongDescription ? 'line-clamp-2' : ''
               }`}>
-                {item.description}
+                {translate(`menu.${item.id}.description`, item.description)}
               </p>
             </div>
             {isLongDescription && (
@@ -80,7 +82,7 @@ export const MenuCard = ({ item }: MenuCardProps) => {
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="text-gray-500 text-sm hover:text-gray-700 mt-1 font-medium self-start"
               >
-                {isExpanded ? '접기' : '더보기'}
+                {isExpanded ? translate('collapse', '접기') : translate('readMore', '더보기')}
               </button>
             )}
           </div>
@@ -101,7 +103,7 @@ export const MenuCard = ({ item }: MenuCardProps) => {
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
               }`}
             >
-              {item.available ? '담기' : '품절'}
+              {item.available ? translate('addToCart') : translate('soldOut', '품절')}
             </button>
           </div>
         </div>

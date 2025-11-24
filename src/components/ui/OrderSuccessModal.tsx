@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import { Dialog, Transition } from '@headlessui/react';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
@@ -10,6 +11,7 @@ interface OrderSuccessModalProps {
 }
 
 export const OrderSuccessModal = ({ isOpen, onClose, orderNumber = "001" }: OrderSuccessModalProps) => {
+  const { t: translate } = useTranslation();
   return createPortal(
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[10001]" onClose={onClose}>
@@ -45,20 +47,23 @@ export const OrderSuccessModal = ({ isOpen, onClose, orderNumber = "001" }: Orde
                   
                   {/* 제목 */}
                   <Dialog.Title className="text-2xl font-bold text-black mb-4">
-                    주문이 완료되었습니다!
+                    {translate('orderCompleted', '주문이 완료되었습니다!')}
                   </Dialog.Title>
                   
                   {/* 주문 번호 */}
                   <div className="bg-gray-50 border-2 border-black rounded-lg p-4 mb-6">
-                    <p className="text-sm text-gray-600 mb-1">주문번호</p>
+                    <p className="text-sm text-gray-600 mb-1">{translate('orderNumber', '주문번호')}</p>
                     <p className="text-xl font-bold text-black">#{orderNumber}</p>
                   </div>
                   
                   {/* 안내 메시지 */}
                   <p className="text-gray-600 mb-8 leading-relaxed">
-                    주문이 접수되었습니다.<br />
-                    잠시만 기다려주시면 맛있는 음식을<br />
-                    준비해드리겠습니다.
+                    {translate('orderMessage', '주문이 접수되었습니다.\n잠시만 기다려주시면 맛있는 음식을\n준비해드리겠습니다.').split('\n').map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        {index < 2 && <br />}
+                      </span>
+                    ))}
                   </p>
                   
                   {/* 확인 버튼 */}
@@ -66,7 +71,7 @@ export const OrderSuccessModal = ({ isOpen, onClose, orderNumber = "001" }: Orde
                     onClick={onClose}
                     className="w-full bg-black text-white py-4 font-bold text-lg rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    확인
+                    {translate('confirm', '확인')}
                   </button>
                 </div>
               </Dialog.Panel>

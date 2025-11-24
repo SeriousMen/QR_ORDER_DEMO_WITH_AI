@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "all": "All",
+    "dish": "Food",
+    "drink": "Drinks"
+  },
+  "table": "Table",
+  "orderingTogether": "people ordering together",
+  "orderAvailable": "Order Available",
+  "open": "Open",
+  "allMenu": "All Menu",
+  "food": "Food",
+  "drinks": "Drinks",
+  "cart": "Cart",
+  "total": "Total",
+  "order": "Order",
+  "addToCart": "Add to Cart",
+  "quantity": "Quantity",
+  "price": "Price",
+  "soldOut": "Sold Out",
+  "readMore": "Read More",
+  "collapse": "Collapse",
+  "totalAmount": "Total Amount",
+  "checkout": "Checkout",
+  "orderCompleted": "Order Completed!",
+  "orderNumber": "Order Number",
+  "orderMessage": "Your order has been received.\nPlease wait a moment while we\nprepare your delicious food.",
+  "confirm": "Confirm",
+  "menu": {
+    "1": {
+      "name": "Bulgogi Set",
+      "description": "Tender bulgogi with rice and side dishes"
+    },
+    "2": {
+      "name": "Kimchi Stew",
+      "description": "Spicy and refreshing kimchi stew"
+    },
+    "3": {
+      "name": "Bibimbap",
+      "description": "Mixed rice with fresh vegetables and gochujang"
+    },
+    "4": {
+      "name": "Grilled Pork Belly",
+      "description": "Thick grilled pork belly"
+    },
+    "5": {
+      "name": "Americano",
+      "description": "Rich espresso with deep flavor"
+    },
+    "6": {
+      "name": "Cafe Latte",
+      "description": "Smooth milk and espresso harmony"
+    },
+    "7": {
+      "name": "Orange Juice",
+      "description": "Fresh 100% orange juice"
+    },
+    "8": {
+      "name": "Cola",
+      "description": "Refreshing cola"
+    }
+  }
+}

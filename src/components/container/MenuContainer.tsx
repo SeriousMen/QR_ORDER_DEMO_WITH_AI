@@ -1,15 +1,48 @@
 import { useState, useEffect, useRef } from 'react';
 import { useMenuItems } from '../../hooks/useMenu';
 import { MenuCard } from '../ui/MenuCard';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../hooks/useLanguage';
 
-const categories = [
-  { id: 'all', title: '전체' },
-  { id: 'dish', title: '음식' },
-  { id: 'drink', title: '음료' }
-] as const;
+const CountryIcon = ({ country }: { country: string }) => {
+  return (
+    <img 
+      src={`/src/assets/images/country/${country.toLowerCase()}.png`}
+      alt={country}
+      className="w-6 h-4 object-cover rounded border border-gray-300"
+      onError={(e) => {
+        const target = e.target as HTMLImageElement;
+        target.style.display = 'none';
+        target.nextElementSibling?.classList.remove('hidden');
+      }}
+    />
+  );
+};
+
+const CountryFallback = ({ country }: { country: string }) => {
+  return (
+    <div className="w-6 h-4 bg-gray-200 border border-gray-300 rounded flex items-center justify-center hidden">
+      <span className="text-xs font-bold text-gray-700">{country}</span>
+    </div>
+  );
+};
 
 export const MenuContainer = () => {
+  const { t: translate } = useTranslation();
+  const { languages, changeLanguage, getCurrentLanguage } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  
+  const handleLanguageChange = (langCode: string) => {
+    changeLanguage(langCode);
+    setShowLanguageMenu(false);
+  };
+  
+  const categories = [
+    { id: 'all', title: translate('categories.all') },
+    { id: 'dish', title: translate('categories.dish') },
+    { id: 'drink', title: translate('categories.drink') }
+  ] as const;
   
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -54,6 +87,18 @@ export const MenuContainer = () => {
 
     return () => observer.disconnect();
   }, [allMenuItems]);
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (showLanguageMenu && !target.closest('.language-menu')) {
+        setShowLanguageMenu(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showLanguageMenu]);
 
   const scrollToSection = (index: number) => {
     setActiveTab(index);
@@ -97,17 +142,53 @@ export const MenuContainer = () => {
               12
             </div>
             <div>
-              <p className="text-lg font-bold text-black">테이블 12</p>
+              <p className="text-lg font-bold text-black">{translate('table')} 12</p>
               <p className="text-sm text-gray-600 flex items-center gap-1">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                2명이 함께 주문 중
+                2{translate('orderingTogether')}
               </p>
             </div>
           </div>
-          <div className="text-right">
-            <div className="bg-black text-white px-4 py-2 rounded-lg">
-              <p className="text-sm font-bold">주문 가능</p>
-              <p className="text-xs opacity-80">영업중</p>
+          
+          <div className="flex flex-col items-end gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <div className="text-right">
+              <div className="bg-black text-white px-4 py-2 rounded-lg">
+                <p className="text-sm font-bold">{translate('orderAvailable')}</p>
+                <p className="text-xs opacity-80">{translate('open')}</p>
+              </div>
+            </div>
+            
+            {/* 언어 선택 */}
+            <div className="relative language-menu">
+              <button
+                onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center hover:bg-gray-50 transition-colors"
+              >
+                <div className="relative">
+                  <CountryIcon country={getCurrentLanguage().flag} />
+                  <CountryFallback country={getCurrentLanguage().flag} />
+                </div>
+              </button>
+              
+              {showLanguageMenu && (
+                <div className="absolute right-0 top-12 bg-white border-2 border-black rounded-lg shadow-xl z-50 min-w-[120px]">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={`w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3 first:rounded-t-lg last:rounded-b-lg ${
+                        getCurrentLanguage().code === lang.code ? 'bg-gray-100' : ''
+                      }`}
+                    >
+                      <div className="relative">
+                        <CountryIcon country={lang.flag} />
+                        <CountryFallback country={lang.flag} />
+                      </div>
+                      <span className="text-sm font-medium">{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -140,7 +221,7 @@ export const MenuContainer = () => {
         <div ref={(el) => { sectionRefs.current[0] = el }} className="py-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-8 bg-black rounded-full"></div>
-            <h2 className="text-3xl font-bold text-black">전체 메뉴</h2>
+            <h2 className="text-3xl font-bold text-black">{translate('allMenu')}</h2>
           </div>
           <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 xl:grid-cols-4">
             {allMenuItems?.map((item) => (
@@ -153,7 +234,7 @@ export const MenuContainer = () => {
         <div ref={(el) => { sectionRefs.current[1] = el }} className="py-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-8 bg-black rounded-full"></div>
-            <h2 className="text-3xl font-bold text-black">음식</h2>
+            <h2 className="text-3xl font-bold text-black">{translate('food')}</h2>
           </div>
           <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 xl:grid-cols-4">
             {dishItems.map((item) => (
@@ -166,7 +247,7 @@ export const MenuContainer = () => {
         <div ref={(el) => { sectionRefs.current[2] = el }} className="py-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-1 h-8 bg-black rounded-full"></div>
-            <h2 className="text-3xl font-bold text-black">음료</h2>
+            <h2 className="text-3xl font-bold text-black">{translate('drinks')}</h2>
           </div>
           <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 xl:grid-cols-4">
             {drinkItems.map((item) => (
