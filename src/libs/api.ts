@@ -8,7 +8,7 @@ const mockMenuItems: MenuItem[] = [
     description: '부드러운 불고기와 밥, 반찬이 함께 나오는 정식',
     price: 12000,
     category: 'dish',
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1718777791239-c473e9ce7376?w=400&h=300&fit=crop',
     available: true,
   },
   {
@@ -17,7 +17,7 @@ const mockMenuItems: MenuItem[] = [
     description: '매콤하고 시원한 김치찌개',
     price: 8000,
     category: 'dish',
-    image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1760228865341-675704c22a5b?w=400&h=300&fit=crop',
     available: true,
   },
   {
