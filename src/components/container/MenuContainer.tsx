@@ -3,11 +3,25 @@ import { useMenuItems } from '../../hooks/useMenu';
 import { MenuCard } from '../ui/MenuCard';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../hooks/useLanguage';
+import KR from '../../assets/images/country/KR.png';
+import US from '../../assets/images/country/US.png';
+import CN from '../../assets/images/country/CN.png';
+import JP from '../../assets/images/country/JP.png';
+
+const flagMap: Record<string, string> = {
+  KR,
+  US,
+  CN,
+  JP,
+};
 
 const CountryIcon = ({ country }: { country: string }) => {
+   const flagSrc = flagMap[country.toUpperCase()];
+   
   return (
     <img 
-      src={`/src/assets/images/country/${country.toUpperCase()}.png`}
+      // src={`/src/assets/images/country/${country.toUpperCase()}.png`}
+      src={flagSrc}
       alt={country}
       className="w-6 h-4 object-cover rounded border border-gray-300"
       onError={(e) => {
